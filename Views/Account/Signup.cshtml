@@ -1,0 +1,80 @@
+﻿@model testweb.Models.User
+@{
+    ViewBag.Title = "Signup";
+}
+
+<section id="four" class="wrapper style2 special">
+    <div class="inner">
+        <header class="major narrow">
+            <h2>Sign Up</h2>
+            <p>To join all interesting events!</p>
+        </header>
+        @using (Html.BeginForm("Signup", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="container 75%">
+                <div class="row uniform 50%">
+                    <div class="12u$">
+                        @Html.TextBoxFor(model => model.Fullname, new { placeHolder = "Fullname"})
+                        <span style="color: orange;">@Html.ValidationMessageFor(model => model.Fullname)</span>
+                    </div>
+                    <div class="12u$">
+                        @Html.TextBoxFor(model => model.Email, new { placeHolder = "Email" })
+                        <span style="color: orange;">@Html.ValidationMessageFor(model => model.Email)</span>
+                        <span style="color: orange;display: none;" id="checking" >Checking...</span>
+                    </div>
+                    <div class="12u$">
+                        @Html.TextBoxFor(model => model.Password, new { placeHolder = "Password", type="Password"})
+                        <span style="color: orange;">@Html.ValidationMessageFor(model => model.Password)</span>
+                    </div>
+                    <div class="12u$">
+                        <!--Html.ListBoxFor(model => model.SecurityQuestion, new SelectList(
+        new SelectListItem { Selected = true, Text = "Select Security Question", Value = "-1" },
+        new SelectListItem { Selected = false, Text = "What's your best friend's name?", Value = "bestfriend" },
+        new SelectListItem { Selected = false, Text = "What's your first Pet name?", Value = "pet" }), new { value="1", text="nothing"})-->
+                        <select name="securityQuestion">
+                            <option style= "background-color: #1d1919 !important;" value="0" selected>Select Security Question</option>
+                            <option style= "background-color: #1d1919 !important;" value="BestFriendName">What's your Best Friend Name?</option>
+                            <option style= "background-color: #1d1919 !important;" value="PetName">What's your Pet Name?</option>
+                        </select>
+                        <span style="color: orange;">@Html.ValidationMessageFor(model => model.SecurityQuestion)</span>
+                    </div>
+                    <div class="12u$">
+                        @Html.TextBoxFor(model => model.SecurityAnswer, new { placeHolder = "Your Answer?" })
+                        <span style="color: orange;">@Html.ValidationMessageFor(model => model.SecurityAnswer)</span>
+                    </div>
+                    <div class="12u$">
+                        <input type="file" name="image" />
+                    </div>
+                </div>
+            </div>
+            <ul class="actions">
+                <li><input type="submit" class="special" value="Submit" /></li>
+                <li><input type="reset" class="alt" value="Reset" /></li>
+            </ul>
+        }
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        $("#Email").focusout(function () {
+            var email = $('#Email').val();
+
+            //alert('User Name ='+ userName);
+            //$('#checking').show();
+            $.getJSON("/home/CheckEmail?Email=" + email, function (data) {
+                $('#checking').hide();
+                //alert(data);
+                //alert(JSON.stringify(data[0]));
+                if (data) {
+                    alert("Email is not available");
+                    $('#result').text("User already exists in database");
+                }
+                else {
+                    alert("Email is available");
+                    $('#result').text("User Name is available");
+                }
+            });
+        });
+    });
+</script>
