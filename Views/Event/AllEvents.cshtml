@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<!-- One -->
+<section id="one" class="wrapper style1" style="background-color: #333333 !important;">
+    <div class="inner">
+        @foreach (var item in Model) {
+        <article class="feature left">
+            <span class="image" style="padding: 10px 10px 10px 10px !important;"><img src="../@item.ImageLink" alt="" /></span>
+            <div class="content">
+                <h2>@item.Title</h2>
+                <p>
+					@item.Description
+				</p>
+                <ul class="actions">
+                    <li>
+                        <a href="./AnEvent/@item.Id" class="button alt">More</a>
+                    </li>
+                </ul>
+            </div>
+        </article>
+        }
+    </div>
+</section>
+<script type="text/javascript">
+    //document.addEventListener("onload", function () {
+    //document.body.style.background = "#33ee333";
+    //document.getElementById("one").style.background = "#33ee333";
+    //});
+</script>

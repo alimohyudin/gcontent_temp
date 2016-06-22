@@ -1,0 +1,29 @@
+﻿@model testweb.Models.User
+@{
+    ViewBag.Title = "Login";
+}
+
+<section id="four" class="wrapper style2 special">
+    <div class="inner">
+        <header class="major narrow">
+            <h2>Login</h2>
+            <p>To join all interesting events!</p>
+        </header>
+        <form action="#" method="POST">
+            <div class="container 75%">
+                <div class="row uniform 50%">
+                    <div class="12u$">
+                        @Html.TextBoxFor(model => model.Email, new { placeHolder = "Email" })
+                    </div>
+                    <div class="12u$">
+                        @Html.TextBoxFor(model => model.Password, new { placeHolder = "Password", type="PAssword"})
+                    </div>
+                </div>
+            </div>
+            <ul class="actions">
+                <li><input type="submit" class="special" value="Login" /></li>
+                <li><input type="reset" class="alt" value="Forgot Password?" onclick="document.location.href = '/Account/ForgotPassword'"/></li>
+            </ul>
+        </form>
+    </div>
+</section>

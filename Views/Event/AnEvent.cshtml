@@ -1,0 +1,26 @@
+﻿@model testweb.Models.Event
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- One -->
+<section id="one" class="wrapper style1" style="background-color: #333333 !important;">
+    <div class="inner">
+        
+        <article class="feature left">
+            <span class="image" style="padding: 10px 10px 10px 10px !important;"><img src="../../@Model.ImageLink" alt="" /></span>
+            <div class="content">
+                <h2>@Model.Title</h2>
+                <p>
+					@Model.Description
+				</p>
+            </div>
+        </article>
+    </div>
+</section>
+<script type="text/javascript">
+    //document.addEventListener("onload", function () {
+    //document.body.style.background = "#33ee333";
+    //document.getElementById("one").style.background = "#33ee333";
+    //});
+</script>
