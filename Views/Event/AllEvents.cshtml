@@ -6,12 +6,12 @@
     <div class="inner">
         <article class="feature left">
             <div class="content">
-                <form action="./AllEvents" method="get">
+                <form action="./AllEvents" method="get" id="form1">
                     @Html.TextBox("search", "", new { placeHolder = "Type keywords to search..."})
                     <div style="margin-top: -30px;">
                         <ul class="actions">
                             <li>
-                                <a href="#" class="button big special">Search</a>
+                                <a href="#" onclick="document.getElementById('form1').submit();" class="button big special">Search</a>
                             </li>
                         </ul>
                     </div>
