@@ -1,9 +1,27 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
-
 <!-- One -->
-<section id="one" class="wrapper style1" style="background-color: #333333 !important;">
+<section id="one" class="wrapper style1" style="background-color: #333333 !important; margin-bottom: 0px;">
+    <div class="inner">
+        <article class="feature left">
+            <div class="content">
+                <form action="./AllEvents" method="get">
+                    @Html.TextBox("search", "", new { placeHolder = "Type keywords to search..."})
+                    <div style="margin-top: -30px;">
+                        <ul class="actions">
+                            <li>
+                                <a href="./Event/AllEvents" class="button big special">Search</a>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </article>
+    </div>
+</section>
+<!-- Two -->
+<section id="two" class="wrapper style1" style="background-color: #333333 !important; margin-top: -100px;">
     <div class="inner">
         @foreach (var item in Model) {
         <article class="feature left">
@@ -15,7 +33,7 @@
 				</p>
                 <ul class="actions">
                     <li>
-                        <a href="./AnEvent/@item.Id" class="button alt">More</a>
+                        <a href="./AnEvent/@item.Id" class="button alt">Join</a>
                     </li>
                 </ul>
             </div>
